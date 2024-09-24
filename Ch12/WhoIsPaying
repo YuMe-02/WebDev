@@ -1,0 +1,14 @@
+function whosPaying(names) {
+    /******Don't change the code above*******/
+    
+    // Generate a random index based on the array length
+    var randomIndex = Math.floor(Math.random() * names.length);
+    
+    // Select the name from the list using the random index
+    var personPaying = names[randomIndex];
+    
+    // Return the message in the required format
+    return personPaying + " is going to buy lunch today!";
+
+    /******Don't change the code below*******/    
+}
