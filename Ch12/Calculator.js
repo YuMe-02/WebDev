@@ -18,5 +18,5 @@ function calculator(num1, num2, operator) {
     return operator(num1, num2);
 }
 
-var num = calculator(4,5,add);
+var num = calculator(4,5,div);
 console.log(num);
