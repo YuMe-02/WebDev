@@ -55,3 +55,17 @@ $("input").keypress(function(event) {
 $("h1").on("mouseover", function() {
     $("h1").css("color", "green");
 })
+
+// create new elements e.g buttons using jS
+
+// before -- the opening tag of the mentioned elemente
+$("h1").before("<button>NEW Be</button>");
+
+// after -- the opening tag of the mentioned elemente
+$("h1").after("<button>NEW Af</button>");
+
+// prepend -- adds content just before the specified content inside the the targer
+$("h1").prepend("<button>NEW 1 </button>");
+
+// append -- adds content just after the specified content inside the the targer
+$("h1").append("<button>NEW 1 </button>");
