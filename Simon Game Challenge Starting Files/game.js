@@ -2,26 +2,40 @@ alert("Hello! I am an alert box!!");
 
 const buttonColors = ["red", "blue", "green", "yellow"];
 var gamePattern = [];
+var userClickedPattern = [];
+var level = 0;
+
+function buttonPress() {
+    $(".btn").click(function() {
+        var userChosenColour = $(this).attr("id"); // Get the ID of the clicked button
+        console.log("Button clicked:", userChosenColour); // Log the button ID
+        userClickedPattern[userClickedPattern.length] = userChosenColour; // append to list
+        console.log(userClickedPattern); // debugging with list
+        animatePress(userChosenColour);
+        playSound(userChosenColour);
+    });                
+}
 
 function nextSequence() {
-    var randN = Math.floor(Math.random() * 3); //0-3
-    return(randN);
+    var randN = Math.floor(Math.random() * 4); // 1. 0-4
+    randomChosenColour = buttonColors[randN]
+    gamePattern[gamePattern.length] = randomChosenColour; // 2. push the colour to the pattern array
+    $("#" + randomChosenColour).fadeIn(100).fadeOut(100).fadeIn(100);  // 3. fade the button in and out
+    console.log(randomChosenColour);
+    playSound(randomChosenColour);
 }
 
-function randomChosenColor(randomNumber) {
-    var currentColor = (buttonColors[randomNumber]);
-    gamePattern[gamePattern.length] = currentColor;
-    return(currentColor);
+function playSound(name) {
+    var audio = new Audio("sounds/" + name + ".mp3");
+    audio.play();   
 }
 
-var randomNumber = nextSequence();
-var currentColor = randomChosenColor(randomNumber)
-console.log(randomNumber);
-console.log(currentColor);
-console.log(gamePattern);
-  
-$(".yellow")
-  .fadeOut(250) // 500ms (0.5 seconds)
-  .fadeIn(250)
-  .fadeOut(250)
-  .fadeIn(250);
+function animatePress(currentColour){
+    $("#" + currentColour).addClass("pressed")
+    setTimeout(() => {
+        /* Code to run after 100 ms */
+        $("#" + currentColour).removeClass("pressed")
+      }, 100)
+}
+nextSequence();
+buttonPress();
